@@ -1,7 +1,7 @@
 package com.marciarocha.dormmanager.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.marciarocha.dormmanager.R
 
 class MainActivity : AppCompatActivity() {

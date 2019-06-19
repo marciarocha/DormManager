@@ -7,6 +7,8 @@ buildscript {
     ext.rxjava_version = '2.2.9'
     ext.rxandroid_version = '2.1.1'
     ext.room_version = '2.1.0'
+    ext.recyclerview_version = '1.1.0-alpha06'
+    ext.cardview_version = "1.0.0"
     repositories {
         google()
         jcenter()

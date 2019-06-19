@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">DormManager</string>
+    <string name="add_item">+</string>
+    <string name="remove_item">-</string>
+    <string name="info_prices">Prices per bed per night</string>
 </resources>
