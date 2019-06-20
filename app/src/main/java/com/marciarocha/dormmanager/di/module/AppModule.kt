@@ -4,14 +4,16 @@ import android.content.Context
 import com.marciarocha.dormmanager.DormApplication
 import com.marciarocha.dormmanager.di.qualifier.ApplicationContext
 import com.marciarocha.dormmanager.di.scope.PerApplication
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-abstract class AppModule {
+class AppModule {
 
-    @Binds
     @PerApplication
     @ApplicationContext
-    abstract fun provideApplicationContext(application: DormApplication): Context
+    @Provides
+    fun provideApplicationContext(application: DormApplication): Context = application
+
+
 }

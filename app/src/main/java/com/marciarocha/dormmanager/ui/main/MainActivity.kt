@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui
+package com.marciarocha.dormmanager.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -3,4 +3,5 @@
     <string name="add_item">+</string>
     <string name="remove_item">-</string>
     <string name="info_prices">Prices per bed per night</string>
+    <string name="greeting">Hi, there!</string>
 </resources>
