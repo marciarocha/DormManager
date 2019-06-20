@@ -13,10 +13,10 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/text_body"
-            app:layout_constraintBottom_toTopOf="@id/dorms_list"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dorms_list"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/margin_cardview"
             android:text="@string/info_prices"/>
 
     <androidx.recyclerview.widget.RecyclerView
