@@ -28,7 +28,7 @@ class SplashViewModel(
                                 databaseState.value = DatabaseState.DatabaseLoaded
                             }
                             is PopulateDatabaseResult.DatabaseAlreadySeeded -> {
-                                DatabaseState.DatabaseLoaded
+                                databaseState.value = DatabaseState.DatabaseLoaded
                             }
                         }
                     },
