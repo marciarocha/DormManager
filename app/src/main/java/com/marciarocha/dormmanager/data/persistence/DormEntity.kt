@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "dorms")
 data class DormEntity(
     @PrimaryKey @ColumnInfo val description: String,
-    @ColumnInfo val price: Double,
+    @ColumnInfo val price: Int,
     @ColumnInfo val availableBeds: Int
 )

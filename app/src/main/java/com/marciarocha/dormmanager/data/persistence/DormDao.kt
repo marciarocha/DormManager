@@ -17,9 +17,9 @@ interface DormDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(
         dorms: List<DormEntity> = listOf(
-            DormEntity("6 bed dorm", 17.56, 6),
-            DormEntity("8 bed dorm", 14.50, 8),
-            DormEntity("12 bed dorm", 12.01, 12)
+            DormEntity("6 bed dorm", 1756, 6),
+            DormEntity("8 bed dorm", 1450, 8),
+            DormEntity("12 bed dorm", 1201, 12)
         )
     )
 }
