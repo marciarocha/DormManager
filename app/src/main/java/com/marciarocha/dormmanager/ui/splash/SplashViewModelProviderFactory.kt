@@ -2,7 +2,7 @@ package com.marciarocha.dormmanager.ui.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.marciarocha.dormmanager.domain.usecase.DormInteractor
+import com.marciarocha.dormmanager.domain.interactor.DormInteractor
 import javax.inject.Inject
 
 

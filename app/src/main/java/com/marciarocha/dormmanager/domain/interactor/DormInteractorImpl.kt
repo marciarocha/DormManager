@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.domain.usecase
+package com.marciarocha.dormmanager.domain.interactor
 
 import com.marciarocha.dormmanager.data.repository.DormRepository
 import com.marciarocha.dormmanager.domain.model.Dorm

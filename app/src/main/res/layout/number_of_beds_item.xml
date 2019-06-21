@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/number_of_beds_layout"
+             android:layout_margin="@dimen/margin_cardview"
+             android:layout_width="@dimen/size_layout_bedpicker"
+             android:layout_height="@dimen/size_layout_bedpicker"
+             android:background="@drawable/rounded_button">
+
+    <TextView
+            android:id="@+id/item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="4"
+            android:layout_gravity="center"
+            android:textColor="@color/colorDarkGray"/>
+
+</FrameLayout>

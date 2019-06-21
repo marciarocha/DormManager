@@ -3,20 +3,31 @@ package com.marciarocha.dormmanager.ui.main
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.marciarocha.dormmanager.domain.SelectedDormsManager
+import com.marciarocha.dormmanager.domain.interactor.DormInteractor
+import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
-import com.marciarocha.dormmanager.domain.usecase.DormInteractor
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
-class MainViewModel(private val dormInteractor: DormInteractor) : ViewModel() {
+class MainViewModel(
+    private val dormInteractor: DormInteractor,
+    private val selectedDormManager: SelectedDormsManager
+) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
     val availableDormsState = MutableLiveData<AvailableDormsState>()
+    val totalCost = MutableLiveData<ShoppingCartState>()
 
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
+    }
+
+    fun selectedDorm(dorm: Dorm, result: Int) {
+        selectedDormManager.putDorm(dorm, result)
+        totalCost.postValue(ShoppingCartState(selectedDormManager.getTotalPrice()))
     }
 
     fun getDorms() {
