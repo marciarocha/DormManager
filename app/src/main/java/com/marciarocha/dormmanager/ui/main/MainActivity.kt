@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
     lateinit var mainViewModelProviderFactory: MainViewModelProviderFactory
 
     private val adapter = DormListAdapter(this::onSelectDorm)
+    private var totalPrice = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +62,11 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
             }
         })
 
-        viewModel.totalCost.observe(this, Observer {
-            total_cost_cardview.visibility = it.visibility
+        viewModel.totalCost.observe(this, Observer { shoppingCartState ->
+            total_cost_cardview.visibility = shoppingCartState.visibility
             checkout_button.text = getString(R.string.checkout_button)
-            total_price_textView.text = "${it.price} " + getString(R.string.USD)
+            total_price_textView.text = "${shoppingCartState.price} " + getString(R.string.USD)
+            totalPrice = shoppingCartState.price
         })
     }
 
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
 
     private fun onCheckout() {
         val intent = Intent(this, CheckoutActivity::class.java)
-        intent.putExtra(TOTAL_PRICE, 123.90)
+        intent.putExtra(TOTAL_PRICE, totalPrice)
         startActivityForResult(intent, CHECKOUT_REQ_CODE)
     }
 

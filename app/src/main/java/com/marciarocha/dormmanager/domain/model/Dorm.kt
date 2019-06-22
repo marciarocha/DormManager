@@ -6,4 +6,9 @@ data class Dorm(
     val description: String,
     val price: Int,
     val availableBeds: Int
-) : Serializable
+) : Serializable {
+
+    fun getFormattedPrice(): Double {
+        return price / 100.00
+    }
+}
