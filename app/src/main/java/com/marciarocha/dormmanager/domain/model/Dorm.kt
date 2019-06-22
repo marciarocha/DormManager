@@ -5,7 +5,8 @@ import java.io.Serializable
 data class Dorm(
     val description: String,
     val price: Int,
-    val availableBeds: Int
+    val availableBeds: Int,
+    val currency: String
 ) : Serializable {
 
     fun getFormattedPrice(): Double {

@@ -7,5 +7,5 @@ interface DormRepository {
 
     fun getDorms(): Single<List<DormEntity>>
     fun updateAvailableBeds(description: String, availableBeds: Int)
-    fun populateDatabase()
+    fun initDatabase()
 }

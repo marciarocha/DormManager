@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class DormEntity(
     @PrimaryKey @ColumnInfo val description: String,
     @ColumnInfo val price: Int,
-    @ColumnInfo val availableBeds: Int
+    @ColumnInfo val availableBeds: Int,
+    @ColumnInfo val currency: String
 )

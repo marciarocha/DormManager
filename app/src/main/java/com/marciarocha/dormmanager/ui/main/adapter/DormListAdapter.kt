@@ -15,8 +15,6 @@ class DormListAdapter(private val onSelect: (Dorm) -> Unit) : RecyclerView.Adapt
         notifyDataSetChanged()
     }
 
-    fun clear() = data.clear()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DormViewHolder {
         return DormViewHolder(
             LayoutInflater.from(parent.context).inflate(

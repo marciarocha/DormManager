@@ -15,7 +15,7 @@ class DormInteractorImpl @Inject constructor(private val dormRepository: DormRep
         return getDorms()
             .flatMap {
                 if (it is DatabaseResult.NoResults) {
-                    dormRepository.populateDatabase()
+                    dormRepository.initDatabase()
                     Single.just(PopulateDatabaseResult.Success)
                 } else {
                     Single.just(PopulateDatabaseResult.DatabaseAlreadySeeded)

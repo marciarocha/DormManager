@@ -9,7 +9,8 @@ class DormViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(dorm: Dorm, onSelect: (Dorm) -> Unit) {
         itemView.dorm_description.text = dorm.description
-        itemView.price_per_bed.text = "$${dorm.getFormattedPrice()} "
+        itemView.price_per_bed.text = "${dorm.getFormattedPrice()}"
+        itemView.currency.text = "${dorm.currency}"
         itemView.book_button.setOnClickListener { onSelect(dorm) }
     }
 }

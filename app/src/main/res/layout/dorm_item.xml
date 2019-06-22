@@ -47,6 +47,18 @@
                 app:layout_constraintTop_toBottomOf="@id/dorm_description"
                 app:layout_constraintStart_toEndOf="@id/dorm_picture"/>
 
+        <TextView
+                android:id="@+id/currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/cardview_body"
+                android:layout_marginStart="@dimen/margin_text_in_cardview"
+                android:layout_marginBottom="@dimen/margin_text_in_cardview"
+                android:textColor="@color/colorDarkGray"
+                app:layout_constraintTop_toBottomOf="@id/dorm_description"
+                app:layout_constraintStart_toEndOf="@id/price_per_bed"/>
+
+
         <ImageButton
                 android:id="@+id/book_button"
                 android:layout_width="@dimen/round_button_size"

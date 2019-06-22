@@ -16,8 +16,14 @@ class DormRepositoryImpl @Inject constructor(private val dormDao: DormDao) :
         dormDao.updateAvailableBeds(description, availableBeds)
     }
 
-    override fun populateDatabase() {
-        dormDao.insertAll()
+    override fun initDatabase() {
+        dormDao.insertAll(
+            listOf(
+                DormEntity("6 bed dorm", 1756, 6, "USD"),
+                DormEntity("8 bed dorm", 1450, 8, "USD"),
+                DormEntity("12 bed dorm", 1201, 12, "USD")
+            )
+        )
     }
 
 }
