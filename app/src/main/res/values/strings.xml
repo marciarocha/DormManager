@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">DormManager</string>
-    <string name="info_prices">Prices per bed per night</string>
     <string name="greeting">Hi, there!</string>
     <string name="loading_error">Oops! Something went wrong.</string>
     <string name="bedpicker_info">How many beds do you wish to book?</string>

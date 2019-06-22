@@ -1,6 +1,7 @@
 package com.marciarocha.dormmanager.ui.splash.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
@@ -13,12 +14,13 @@ class SplashViewModel(
     private val dormInteractor: DormInteractor
 ) : ViewModel() {
 
-    val databaseState = MutableLiveData<DatabaseState>()
+    private val _databaseState = MutableLiveData<DatabaseState>()
+    val databaseState: LiveData<DatabaseState> = _databaseState
 
     private val compositeDisposable = CompositeDisposable()
 
     fun populateDatabaseIfEmpty() {
-        databaseState.value = DatabaseState.Loading
+        _databaseState.value = DatabaseState.Loading
 
         compositeDisposable.add(
             dormInteractor.populateDatabase().observeOn(AndroidSchedulers.mainThread())
@@ -26,15 +28,15 @@ class SplashViewModel(
                     {
                         when (it) {
                             is PopulateDatabaseResult.Success -> {
-                                databaseState.value = DatabaseState.DatabaseLoaded
+                                _databaseState.value = DatabaseState.DatabaseLoaded
                             }
                             is PopulateDatabaseResult.DatabaseAlreadySeeded -> {
-                                databaseState.value = DatabaseState.DatabaseLoaded
+                                _databaseState.value = DatabaseState.DatabaseLoaded
                             }
                         }
                     },
                     {
-                        databaseState.value = DatabaseState.Error
+                        _databaseState.value = DatabaseState.Error
                         Log.e("getDorms", it.message)
                     })
         )

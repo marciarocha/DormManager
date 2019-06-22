@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.bedpicker
+package com.marciarocha.dormmanager.ui.bedpicker.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

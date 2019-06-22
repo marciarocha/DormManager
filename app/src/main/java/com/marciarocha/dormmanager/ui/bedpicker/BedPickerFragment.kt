@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.domain.model.Dorm
+import com.marciarocha.dormmanager.ui.bedpicker.adapter.BedPickerAdapter
 import kotlinx.android.synthetic.main.fragment_item_list.*
 
 

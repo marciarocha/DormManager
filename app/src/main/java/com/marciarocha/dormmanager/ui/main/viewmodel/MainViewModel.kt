@@ -1,6 +1,7 @@
 package com.marciarocha.dormmanager.ui.main.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marciarocha.dormmanager.domain.SelectedDormsManager
@@ -19,8 +20,11 @@ class MainViewModel(
 
     private val compositeDisposable = CompositeDisposable()
 
-    val availableDormsState = MutableLiveData<AvailableDormsState>()
-    val totalCost = MutableLiveData<ShoppingCartState>()
+    private val _availableDormsState = MutableLiveData<AvailableDormsState>()
+    val availableDormsState: LiveData<AvailableDormsState> = _availableDormsState
+
+    private val _totalCost = MutableLiveData<ShoppingCartState>()
+    val totalCost: LiveData<ShoppingCartState> = _totalCost
 
     override fun onCleared() {
         super.onCleared()
@@ -33,7 +37,7 @@ class MainViewModel(
     }
 
     fun getDorms() {
-        availableDormsState.value = AvailableDormsState.Loading
+        _availableDormsState.value = AvailableDormsState.Loading
 
         compositeDisposable.add(
             dormInteractor.getDorms()
@@ -41,15 +45,15 @@ class MainViewModel(
                 .subscribe({ dormResult ->
                     when (dormResult) {
                         is DatabaseResult.Success -> {
-                            availableDormsState.value = AvailableDormsState.Loaded(dormResult.dorms)
+                            _availableDormsState.value = AvailableDormsState.Loaded(dormResult.dorms)
                         }
                         is DatabaseResult.NoResults -> {
-                            availableDormsState.value = AvailableDormsState.Error
+                            _availableDormsState.value = AvailableDormsState.Error
                         }
                     }
                 },
                     {
-                        availableDormsState.value = AvailableDormsState.Error
+                        _availableDormsState.value = AvailableDormsState.Error
                         Log.e("getDorms", it.message)
                     })
         )
@@ -61,7 +65,7 @@ class MainViewModel(
     }
 
     private fun postTotalPrice() {
-        totalCost.postValue(ShoppingCartState(selectedDormManager.getTotalPrice()))
+        _totalCost.value = ShoppingCartState(selectedDormManager.getTotalPrice())
     }
 
 }
