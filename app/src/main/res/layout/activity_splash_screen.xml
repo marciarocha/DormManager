@@ -14,7 +14,7 @@
               app:layout_constraintTop_toTopOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
-              android:textSize="40sp"
+              android:textSize="@dimen/splash_text_size"
               android:fontFamily="sans-serif-condensed-medium"
               android:textColor="@color/colorDarkGray"
               android:text="@string/greeting"

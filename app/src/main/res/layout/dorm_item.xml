@@ -11,7 +11,7 @@
             android:id="@+id/dorm_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="@dimen/padding_cardview">
 
         <ImageView
                 android:id="@+id/dorm_picture"

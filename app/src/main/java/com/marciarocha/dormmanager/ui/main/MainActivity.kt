@@ -50,17 +50,17 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
         viewModel.availableDormsState.observe(this, Observer { availableDormsState ->
             when (availableDormsState) {
                 is AvailableDormsState.Loading -> {
-                    progress_wheel_dormslist.visibility = View.VISIBLE
+                    progress_bar_mainactivity.visibility = View.VISIBLE
                     error_message.visibility = View.GONE
                 }
                 is AvailableDormsState.Loaded -> {
                     error_message.visibility = View.GONE
-                    progress_wheel_dormslist.visibility = View.GONE
+                    progress_bar_mainactivity.visibility = View.GONE
                     adapter.update(availableDormsState.dorms.toMutableList())
                 }
                 is AvailableDormsState.Error -> {
                     error_message.visibility = View.VISIBLE
-                    progress_wheel_dormslist.visibility = View.GONE
+                    progress_bar_mainactivity.visibility = View.GONE
                 }
             }
         })

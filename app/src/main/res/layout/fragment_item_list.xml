@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/dialog_fragment_padding"
         android:layout_width="wrap_content">
 
     <TextView android:id="@+id/bedpicker_textView"
@@ -21,7 +21,7 @@
             android:name="com.marciarocha.dormmanager.ui.bedpicker.BedPickerFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/bedpicker_list_top_margin"
             tools:context=".ui.bedpicker.BedPickerFragment"
             tools:listitem="@layout/number_of_beds_item"
             app:layout_constraintStart_toStartOf="parent"

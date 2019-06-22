@@ -7,16 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-    <FrameLayout
-            android:id="@+id/fragment_holder"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"/>
-
-    <ProgressBar android:id="@+id/progress_wheel_dormslist"
+    <ProgressBar android:id="@+id/progress_bar_mainactivity"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:indeterminate="true"
@@ -40,7 +31,7 @@
     <TextView android:id="@+id/error_message"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textSize="@dimen/cardview_title"
+              android:textSize="@dimen/error_text_size"
               app:layout_constraintTop_toTopOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
@@ -53,19 +44,18 @@
                                        android:layout_height="wrap_content"
                                        app:layout_constraintBottom_toBottomOf="parent"
                                        app:layout_constraintTop_toBottomOf="@id/dorms_list"
-                                       android:elevation="@dimen/cardview_default_elevation"
                                        android:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                            android:layout_height="wrap_content"
-                                                           android:padding="@dimen/margin_cardview">
+                                                           android:padding="@dimen/padding_cardview">
 
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="@string/total"
-                      android:textSize="16sp"
+                      android:textSize="@dimen/text_subtitle"
                       android:textStyle="bold"
-                      android:layout_marginStart="8dp"
+                      android:layout_marginStart="@dimen/margin_text_in_cardview"
                       android:textColor="@color/colorDarkGray"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintBottom_toTopOf="@id/total_price_textView"/>
@@ -73,12 +63,12 @@
             <TextView android:id="@+id/total_price_textView"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:textSize="14sp"
-                      android:layout_marginStart="8dp"
+                      android:textSize="@dimen/text_body"
+                      android:layout_marginStart="@dimen/margin_text_in_cardview"
                       android:textColor="@color/colorDarkGray"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintBottom_toTopOf="@id/checkout_button"
-                      android:layout_marginBottom="16dp"/>
+                      android:layout_marginBottom="@dimen/button_text_margin"/>
 
 
             <Button android:background="@drawable/rounded_main_button"
@@ -87,9 +77,9 @@
                     android:layout_height="wrap_content"
                     android:visibility="visible"
                     android:textColor="@color/colorWhite"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="@dimen/button_margin_cardview"
+                    android:layout_marginEnd="@dimen/button_margin_cardview"
+                    android:layout_marginBottom="@dimen/button_margin_cardview"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
