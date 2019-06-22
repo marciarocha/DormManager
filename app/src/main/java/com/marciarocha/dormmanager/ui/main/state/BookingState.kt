@@ -2,7 +2,7 @@ package com.marciarocha.dormmanager.ui.main.state
 
 import android.view.View
 
-data class ShoppingCartState(private val totalCost: Int) {
+data class BookingState(private val totalCost: Int) {
 
     val price = totalCost / 100.00
     val visibility = isButtonVisible()

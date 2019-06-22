@@ -9,7 +9,7 @@ import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
 import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
 import com.marciarocha.dormmanager.ui.main.state.AvailableDormsState
-import com.marciarocha.dormmanager.ui.main.state.ShoppingCartState
+import com.marciarocha.dormmanager.ui.main.state.BookingState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
@@ -23,8 +23,8 @@ class MainViewModel(
     private val _availableDormsState = MutableLiveData<AvailableDormsState>()
     val availableDormsState: LiveData<AvailableDormsState> = _availableDormsState
 
-    private val _totalCost = MutableLiveData<ShoppingCartState>()
-    val totalCost: LiveData<ShoppingCartState> = _totalCost
+    private val _bookingState = MutableLiveData<BookingState>()
+    val bookingState: LiveData<BookingState> = _bookingState
 
     override fun onCleared() {
         super.onCleared()
@@ -65,7 +65,7 @@ class MainViewModel(
     }
 
     private fun postTotalPrice() {
-        _totalCost.value = ShoppingCartState(selectedDormManager.getTotalPrice())
+        _bookingState.value = BookingState(selectedDormManager.getTotalPrice())
     }
 
 }

@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
             }
         })
 
-        viewModel.totalCost.observe(this, Observer { shoppingCartState ->
+        viewModel.bookingState.observe(this, Observer { shoppingCartState ->
             total_cost_cardview.visibility = shoppingCartState.visibility
             checkout_button.text = getString(R.string.checkout_button)
             total_price_textView.text = "${shoppingCartState.price} " + getString(R.string.USD)
