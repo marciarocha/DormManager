@@ -1,10 +1,7 @@
 package com.marciarocha.dormmanager.di.component
 
 import com.marciarocha.dormmanager.DormApplication
-import com.marciarocha.dormmanager.di.module.ActivityBindingsModule
-import com.marciarocha.dormmanager.di.module.AppModule
-import com.marciarocha.dormmanager.di.module.PersistenceModule
-import com.marciarocha.dormmanager.di.module.RepositoryModule
+import com.marciarocha.dormmanager.di.module.*
 import com.marciarocha.dormmanager.di.scope.PerApplication
 import dagger.BindsInstance
 import dagger.Component
@@ -12,7 +9,15 @@ import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 
 @PerApplication
-@Component(modules = [AndroidInjectionModule::class, AppModule::class, PersistenceModule::class, RepositoryModule::class, ActivityBindingsModule::class])
+@Component(
+    modules = [AndroidInjectionModule::class,
+        AppModule::class,
+        PersistenceModule::class,
+        RepositoryModule::class,
+        ActivityBindingsModule::class,
+        NetworkModule::class,
+        InteractorModule::class]
+)
 interface AppComponent : AndroidInjector<DormApplication> {
 
     @Component.Builder
@@ -20,6 +25,7 @@ interface AppComponent : AndroidInjector<DormApplication> {
 
         @BindsInstance
         fun create(app: DormApplication): Builder
+
         fun build(): AppComponent
 
     }

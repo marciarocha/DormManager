@@ -3,7 +3,7 @@ package com.marciarocha.dormmanager.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.marciarocha.dormmanager.domain.SelectedDormsManager
-import com.marciarocha.dormmanager.domain.interactor.DormInteractor
+import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")

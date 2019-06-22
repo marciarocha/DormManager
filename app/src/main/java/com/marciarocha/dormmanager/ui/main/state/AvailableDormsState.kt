@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.main
+package com.marciarocha.dormmanager.ui.main.state
 
 import com.marciarocha.dormmanager.domain.model.Dorm
 

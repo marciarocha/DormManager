@@ -12,7 +12,7 @@ import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 
-class SplashScreen : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     private lateinit var viewModel: SplashViewModel
     @Inject

@@ -17,4 +17,8 @@ class SelectedDormsManager {
         return totalPrice
     }
 
+    fun clearDorms() {
+        map.clear()
+    }
+
 }

@@ -1,6 +1,6 @@
-package com.marciarocha.dormmanager.domain.interactor
+package com.marciarocha.dormmanager.domain.interactor.dorms
 
-import com.marciarocha.dormmanager.data.repository.DormRepository
+import com.marciarocha.dormmanager.data.repository.dorms.DormRepository
 import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.domain.model.DormMapper
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
@@ -8,7 +8,8 @@ import com.marciarocha.dormmanager.domain.state.PopulateDatabaseResult
 import io.reactivex.Single
 import javax.inject.Inject
 
-class DormInteractorImpl @Inject constructor(private val dormRepository: DormRepository) : DormInteractor {
+class DormInteractorImpl @Inject constructor(private val dormRepository: DormRepository) :
+    DormInteractor {
 
     override fun populateDatabase(): Single<PopulateDatabaseResult> {
         return getDorms()

@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.data.persistence
+package com.marciarocha.dormmanager.data.persistence.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

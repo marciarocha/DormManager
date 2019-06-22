@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.domain.interactor
+package com.marciarocha.dormmanager.domain.interactor.dorms
 
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
 import com.marciarocha.dormmanager.domain.state.PopulateDatabaseResult

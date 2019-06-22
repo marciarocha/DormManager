@@ -1,6 +1,9 @@
 package com.marciarocha.dormmanager.ui.main
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -9,9 +12,13 @@ import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.ui.bedpicker.BedPickerFragment
 import com.marciarocha.dormmanager.ui.bedpicker.OnDialogResultListener
+import com.marciarocha.dormmanager.ui.checkout.CheckoutActivity
+import com.marciarocha.dormmanager.ui.main.state.AvailableDormsState
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+
+const val TOTAL_PRICE = "total-price"
 
 class MainActivity : AppCompatActivity(), OnDialogResultListener {
 
@@ -30,8 +37,9 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
 
         viewModel = ViewModelProviders.of(this, mainViewModelProviderFactory).get(MainViewModel::class.java)
         observeViewModelChanges()
-
         viewModel.getDorms()
+
+        checkout_button.setOnClickListener { onCheckout() }
     }
 
     private fun observeViewModelChanges() {
@@ -58,7 +66,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
 
         viewModel.totalCost.observe(this, Observer {
             checkout_button.visibility = it.visibility
-            checkout_button.text = getString(R.string.checkout_button) + " ${it.price}$"
+            checkout_button.text = getString(R.string.checkout_button) + " ${it.price}"
         })
     }
 
@@ -67,6 +75,30 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
     }
 
     override fun onDialogResult(dorm: Dorm, result: Int) {
-        viewModel.selectedDorm(dorm, result)
+        viewModel.onDormSelected(dorm, result)
+    }
+
+    private fun onCheckout() {
+        val intent = Intent(this, CheckoutActivity::class.java)
+        intent.putExtra(TOTAL_PRICE, 123.90)
+        startActivityForResult(intent, CHECKOUT_REQ_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CHECKOUT_REQ_CODE) {
+            when (resultCode) {
+                Activity.RESULT_CANCELED -> {
+                    Log.i("CheckoutActivity", "Result canceled")
+                }
+                Activity.RESULT_OK -> {
+                    viewModel.clearSelectedDorms()
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val CHECKOUT_REQ_CODE = 1000
     }
 }

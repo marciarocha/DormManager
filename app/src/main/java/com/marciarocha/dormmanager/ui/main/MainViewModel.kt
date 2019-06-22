@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marciarocha.dormmanager.domain.SelectedDormsManager
-import com.marciarocha.dormmanager.domain.interactor.DormInteractor
+import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
 import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
+import com.marciarocha.dormmanager.ui.main.state.AvailableDormsState
+import com.marciarocha.dormmanager.ui.main.state.ShoppingCartState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
@@ -25,9 +27,9 @@ class MainViewModel(
         compositeDisposable.dispose()
     }
 
-    fun selectedDorm(dorm: Dorm, result: Int) {
+    fun onDormSelected(dorm: Dorm, result: Int) {
         selectedDormManager.putDorm(dorm, result)
-        totalCost.postValue(ShoppingCartState(selectedDormManager.getTotalPrice()))
+        postTotalPrice()
     }
 
     fun getDorms() {
@@ -51,6 +53,15 @@ class MainViewModel(
                         Log.e("getDorms", it.message)
                     })
         )
+    }
+
+    fun clearSelectedDorms() {
+        selectedDormManager.clearDorms()
+        postTotalPrice()
+    }
+
+    private fun postTotalPrice() {
+        totalCost.postValue(ShoppingCartState(selectedDormManager.getTotalPrice()))
     }
 
 }
