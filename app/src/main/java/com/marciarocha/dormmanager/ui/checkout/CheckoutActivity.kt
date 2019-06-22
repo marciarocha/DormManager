@@ -29,6 +29,9 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checkout)
         AndroidInjection.inject(this)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.actionBar_title_checkoutactivity)
+
         viewModel = ViewModelProviders.of(this, mainViewModelProviderFactory).get(CheckoutViewModel::class.java)
         observeViewModelChanges()
         viewModel.getRates("USD")
@@ -94,6 +97,12 @@ class CheckoutActivity : AppCompatActivity() {
         super.onBackPressed()
         setResult(Activity.RESULT_CANCELED)
         finish()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        setResult(Activity.RESULT_CANCELED)
+        finish()
+        return true
     }
 
     private fun onFinishPayment() {
