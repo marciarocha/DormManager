@@ -3,6 +3,7 @@ package com.marciarocha.dormmanager.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -41,9 +42,12 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToMainScreen() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        Handler().postDelayed(Runnable {
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(i)
+            finish()
+        }, 1000)
+
     }
 
     override fun onStart() {
