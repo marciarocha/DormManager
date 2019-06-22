@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.ui.checkout.state.ConversionState
 import com.marciarocha.dormmanager.ui.checkout.state.CurrenciesState
+import com.marciarocha.dormmanager.ui.checkout.viewmodel.CheckoutViewModel
+import com.marciarocha.dormmanager.ui.checkout.viewmodel.CheckoutViewModelProviderFactory
 import com.marciarocha.dormmanager.ui.main.TOTAL_PRICE
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_checkout.*

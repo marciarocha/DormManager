@@ -3,7 +3,7 @@ package com.marciarocha.dormmanager.di.module
 import androidx.lifecycle.ViewModelProvider
 import com.marciarocha.dormmanager.domain.SelectedDormsManager
 import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
-import com.marciarocha.dormmanager.ui.main.MainViewModelProviderFactory
+import com.marciarocha.dormmanager.ui.main.viewmodel.MainViewModelProviderFactory
 import dagger.Module
 import dagger.Provides
 
@@ -18,7 +18,10 @@ class MainActivityModule {
         dormInteractor: DormInteractor,
         selectedDormsManager: SelectedDormsManager
     ): ViewModelProvider.Factory {
-        return MainViewModelProviderFactory(dormInteractor, selectedDormsManager)
+        return MainViewModelProviderFactory(
+            dormInteractor,
+            selectedDormsManager
+        )
     }
 
 }

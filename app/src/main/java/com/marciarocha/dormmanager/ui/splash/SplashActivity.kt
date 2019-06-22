@@ -9,6 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.ui.main.MainActivity
+import com.marciarocha.dormmanager.ui.splash.state.DatabaseState
+import com.marciarocha.dormmanager.ui.splash.viewmodel.SplashViewModel
+import com.marciarocha.dormmanager.ui.splash.viewmodel.SplashViewModelProviderFactory
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 

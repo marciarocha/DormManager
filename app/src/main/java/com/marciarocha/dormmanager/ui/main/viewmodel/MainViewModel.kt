@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.main
+package com.marciarocha.dormmanager.ui.main.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

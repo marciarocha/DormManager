@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.main
+package com.marciarocha.dormmanager.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +18,13 @@ class DormListAdapter(private val onSelect: (Dorm) -> Unit) : RecyclerView.Adapt
     fun clear() = data.clear()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DormViewHolder {
-        return DormViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.dorm_item, parent, false))
+        return DormViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.dorm_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = data.size

@@ -13,7 +13,10 @@ import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.ui.bedpicker.BedPickerFragment
 import com.marciarocha.dormmanager.ui.bedpicker.OnDialogResultListener
 import com.marciarocha.dormmanager.ui.checkout.CheckoutActivity
+import com.marciarocha.dormmanager.ui.main.adapter.DormListAdapter
 import com.marciarocha.dormmanager.ui.main.state.AvailableDormsState
+import com.marciarocha.dormmanager.ui.main.viewmodel.MainViewModel
+import com.marciarocha.dormmanager.ui.main.viewmodel.MainViewModelProviderFactory
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject

@@ -2,8 +2,8 @@ package com.marciarocha.dormmanager.ui.bedpicker
 
 
 class Range(
-    val min: Int,
-    val max: Int
+    private val min: Int,
+    private val max: Int
 ) {
 
     fun toList(): List<Int> {

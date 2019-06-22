@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.main
+package com.marciarocha.dormmanager.ui.main.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

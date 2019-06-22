@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.checkout
+package com.marciarocha.dormmanager.ui.checkout.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
