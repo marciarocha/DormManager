@@ -29,10 +29,11 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dorms_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/total_cost_cardview"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
@@ -51,6 +52,7 @@
                                        android:layout_width="match_parent"
                                        android:layout_height="wrap_content"
                                        app:layout_constraintBottom_toBottomOf="parent"
+                                       app:layout_constraintTop_toBottomOf="@id/dorms_list"
                                        android:elevation="@dimen/cardview_default_elevation"
                                        android:visibility="gone">
 
