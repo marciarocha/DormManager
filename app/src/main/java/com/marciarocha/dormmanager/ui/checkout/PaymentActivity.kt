@@ -11,18 +11,18 @@ import androidx.lifecycle.ViewModelProviders
 import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.ui.checkout.state.ConversionState
 import com.marciarocha.dormmanager.ui.checkout.state.CurrenciesState
-import com.marciarocha.dormmanager.ui.checkout.viewmodel.CheckoutViewModel
-import com.marciarocha.dormmanager.ui.checkout.viewmodel.CheckoutViewModelProviderFactory
+import com.marciarocha.dormmanager.ui.checkout.viewmodel.PaymentViewModel
+import com.marciarocha.dormmanager.ui.checkout.viewmodel.PaymentViewModelProviderFactory
 import com.marciarocha.dormmanager.ui.main.TOTAL_PRICE
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_checkout.*
 import javax.inject.Inject
 
-class CheckoutActivity : AppCompatActivity() {
+class PaymentActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: CheckoutViewModel
+    private lateinit var viewModel: PaymentViewModel
     @Inject
-    lateinit var mainViewModelProviderFactory: CheckoutViewModelProviderFactory
+    lateinit var mainViewModelProviderFactory: PaymentViewModelProviderFactory
 
     private val totalCost by lazy { intent.extras.getDouble(TOTAL_PRICE) }
 
@@ -34,7 +34,7 @@ class CheckoutActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.actionBar_title_checkoutactivity)
 
-        viewModel = ViewModelProviders.of(this, mainViewModelProviderFactory).get(CheckoutViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, mainViewModelProviderFactory).get(PaymentViewModel::class.java)
         observeViewModelChanges()
         viewModel.getRates("USD")
 

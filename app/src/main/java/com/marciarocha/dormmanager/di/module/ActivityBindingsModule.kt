@@ -1,6 +1,6 @@
 package com.marciarocha.dormmanager.di.module
 
-import com.marciarocha.dormmanager.ui.checkout.CheckoutActivity
+import com.marciarocha.dormmanager.ui.checkout.PaymentActivity
 import com.marciarocha.dormmanager.ui.main.MainActivity
 import com.marciarocha.dormmanager.ui.splash.SplashActivity
 import dagger.Module
@@ -15,6 +15,6 @@ abstract class ActivityBindingsModule {
     @ContributesAndroidInjector(modules = [MainActivityModule::class])
     abstract fun bindMainActivity(): MainActivity
 
-    @ContributesAndroidInjector(modules = [CheckoutActivityModule::class])
-    abstract fun bindCheckoutActivity(): CheckoutActivity
+    @ContributesAndroidInjector(modules = [PaymentActivityModule::class])
+    abstract fun bindPaymentActivity(): PaymentActivity
 }

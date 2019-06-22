@@ -12,7 +12,7 @@ import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.domain.model.Dorm
 import com.marciarocha.dormmanager.ui.bedpicker.BedPickerFragment
 import com.marciarocha.dormmanager.ui.bedpicker.OnDialogResultListener
-import com.marciarocha.dormmanager.ui.checkout.CheckoutActivity
+import com.marciarocha.dormmanager.ui.checkout.PaymentActivity
 import com.marciarocha.dormmanager.ui.main.adapter.DormListAdapter
 import com.marciarocha.dormmanager.ui.main.state.AvailableDormsState
 import com.marciarocha.dormmanager.ui.main.viewmodel.MainViewModel
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
     }
 
     private fun onCheckout() {
-        val intent = Intent(this, CheckoutActivity::class.java)
+        val intent = Intent(this, PaymentActivity::class.java)
         intent.putExtra(TOTAL_PRICE, totalPrice)
         startActivityForResult(intent, CHECKOUT_REQ_CODE)
     }
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
         if (requestCode == CHECKOUT_REQ_CODE) {
             when (resultCode) {
                 Activity.RESULT_CANCELED -> {
-                    Log.i("CheckoutActivity", "Result canceled")
+                    Log.i("PaymentActivity", "Result canceled")
                 }
                 Activity.RESULT_OK -> {
                     viewModel.clearSelectedDorms()

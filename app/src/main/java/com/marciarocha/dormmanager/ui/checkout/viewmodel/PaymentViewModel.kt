@@ -10,7 +10,7 @@ import com.marciarocha.dormmanager.ui.checkout.state.CurrenciesState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
-class CheckoutViewModel(private val ratesInteractor: RatesInteractor) : ViewModel() {
+class PaymentViewModel(private val ratesInteractor: RatesInteractor) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     private val _ratesState = MutableLiveData<CurrenciesState>()

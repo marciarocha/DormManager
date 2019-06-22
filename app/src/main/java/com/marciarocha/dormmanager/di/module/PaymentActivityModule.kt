@@ -3,15 +3,15 @@ package com.marciarocha.dormmanager.di.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.marciarocha.dormmanager.domain.interactor.rates.RatesInteractor
-import com.marciarocha.dormmanager.ui.checkout.viewmodel.CheckoutViewModelProviderFactory
+import com.marciarocha.dormmanager.ui.checkout.viewmodel.PaymentViewModelProviderFactory
 import dagger.Module
 import dagger.Provides
 
 @Module
-class CheckoutActivityModule {
+class PaymentActivityModule {
 
     @Provides
     fun provideViewModelProviderFactory(ratesInteractor: RatesInteractor): ViewModelProvider.Factory {
-        return CheckoutViewModelProviderFactory(ratesInteractor)
+        return PaymentViewModelProviderFactory(ratesInteractor)
     }
 }
