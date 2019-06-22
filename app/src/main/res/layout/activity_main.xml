@@ -26,20 +26,6 @@
                  app:layout_constraintBottom_toBottomOf="parent"
                  android:visibility="gone"/>
 
-
-    <TextView
-            android:id="@+id/info_about_prices"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/text_body"
-            app:layout_constraintTop_toBottomOf="@id/dorms_list"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="@dimen/margin_cardview"
-            android:text="@string/info_prices"
-            android:visibility="gone"/>
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dorms_list"
             android:layout_width="match_parent"
@@ -47,7 +33,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
@@ -62,14 +47,55 @@
               android:visibility="gone"
               android:text="@string/loading_error"/>
 
-    <Button android:background="@color/colorPrimary"
-            android:id="@+id/checkout_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="gone"
-            android:textColor="@color/colorWhite"/>
+    <androidx.cardview.widget.CardView android:id="@+id/total_cost_cardview"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       app:layout_constraintBottom_toBottomOf="parent"
+                                       android:elevation="@dimen/cardview_default_elevation"
+                                       android:visibility="gone">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content"
+                                                           android:padding="@dimen/margin_cardview">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/total"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      android:layout_marginStart="8dp"
+                      android:textColor="@color/colorDarkGray"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintBottom_toTopOf="@id/total_price_textView"/>
+
+            <TextView android:id="@+id/total_price_textView"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="14sp"
+                      android:layout_marginStart="8dp"
+                      android:textColor="@color/colorDarkGray"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintBottom_toTopOf="@id/checkout_button"
+                      android:layout_marginBottom="16dp"/>
+
+
+            <Button android:background="@drawable/rounded_main_button"
+                    android:id="@+id/checkout_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

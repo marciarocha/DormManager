@@ -4,7 +4,7 @@
              android:layout_margin="@dimen/margin_cardview"
              android:layout_width="@dimen/size_layout_bedpicker"
              android:layout_height="@dimen/size_layout_bedpicker"
-             android:background="@drawable/rounded_button">
+             android:background="@drawable/rounded_small_button">
 
     <TextView
             android:id="@+id/item_number"

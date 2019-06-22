@@ -6,4 +6,6 @@
     <string name="bedpicker_info">How many beds do you wish to book?</string>
     <string name="checkout_button">Pay</string>
     <string name="finish_button">Finish</string>
+    <string name="total">Total</string>
+    <string name="USD">USD</string>
 </resources>
