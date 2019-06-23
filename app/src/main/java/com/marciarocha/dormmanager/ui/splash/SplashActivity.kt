@@ -39,6 +39,7 @@ class SplashActivity : AppCompatActivity() {
                     goToMainScreen()
                 }
                 is DatabaseState.Error -> {
+                    finish()
                 }
             }
         })
