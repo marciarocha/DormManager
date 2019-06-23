@@ -67,21 +67,37 @@
                       android:layout_marginStart="@dimen/margin_text_in_cardview"
                       android:textColor="@color/colorDarkGray"
                       app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintBottom_toTopOf="@id/checkout_button"
+                      app:layout_constraintBottom_toTopOf="@id/cancel_button"
                       android:layout_marginBottom="@dimen/button_text_margin"/>
+
+            <Button android:id="@+id/cancel_button"
+                    android:background="@drawable/rounded_secondary_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/cancel"
+                    android:layout_marginBottom="@dimen/button_margin_cardview"
+                    android:layout_marginStart="@dimen/margin_cardview"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/checkout_button"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
 
             <Button android:background="@drawable/rounded_main_button"
                     android:id="@+id/checkout_button"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:visibility="visible"
                     android:textColor="@color/colorWhite"
                     android:layout_marginStart="@dimen/button_margin_cardview"
                     android:layout_marginEnd="@dimen/button_margin_cardview"
                     android:layout_marginBottom="@dimen/button_margin_cardview"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintHorizontal_weight="1.5"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cancel_button"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
 

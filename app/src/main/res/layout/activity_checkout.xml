@@ -26,6 +26,9 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintTop_toTopOf="parent"
               app:layout_constraintEnd_toStartOf="@id/guideline"
+              android:textSize="@dimen/text_title"
+              android:textAlignment="center"
+              android:textColor="@color/colorBlack"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
 

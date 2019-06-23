@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
         viewModel.getDorms()
 
         checkout_button.setOnClickListener { onCheckout() }
+        cancel_button.setOnClickListener { onCancel() }
     }
 
     private fun observeViewModelChanges() {
@@ -85,6 +86,10 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
         val intent = Intent(this, PaymentActivity::class.java)
         intent.putExtra(TOTAL_PRICE, totalPrice)
         startActivityForResult(intent, CHECKOUT_REQ_CODE)
+    }
+
+    private fun onCancel() {
+        viewModel.clearSelectedDorms()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
