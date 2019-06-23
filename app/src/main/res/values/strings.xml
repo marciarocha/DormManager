@@ -9,4 +9,5 @@
     <string name="USD">USD</string>
     <string name="actionBar_title_checkoutactivity">Your booking</string>
     <string name="cancel">Cancel</string>
+    <string name="currencies_error">We cannot show you different currencies at the moment.</string>
 </resources>

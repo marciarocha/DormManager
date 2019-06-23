@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -67,6 +68,7 @@ class PaymentActivity : AppCompatActivity() {
                     currency_spinner.visibility = View.GONE
                     total_checkout_text.visibility = View.VISIBLE
                     total_checkout_text.text = "$totalCost USD"
+                    showToast()
                 }
             }
         })
@@ -96,6 +98,10 @@ class PaymentActivity : AppCompatActivity() {
                 return
             }
         }
+    }
+
+    private fun showToast() {
+        Toast.makeText(this, getString(R.string.currencies_error), Toast.LENGTH_LONG).show()
     }
 
     override fun onBackPressed() {
