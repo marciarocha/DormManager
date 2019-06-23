@@ -47,12 +47,14 @@ class PaymentActivity : AppCompatActivity() {
                 is CurrenciesState.Loading -> {
                     checkout_progressbar.visibility = View.VISIBLE
                     finish_button.isEnabled = false
+                    finish_button.alpha = 0.5f
                     currency_spinner.visibility = View.GONE
                     total_checkout_text.visibility = View.GONE
                 }
                 is CurrenciesState.Loaded -> {
                     checkout_progressbar.visibility = View.GONE
                     finish_button.isEnabled = true
+                    finish_button.alpha = 1f
                     initSpinner(it.currencies)
                     currency_spinner.visibility = View.VISIBLE
                     total_checkout_text.visibility = View.VISIBLE
@@ -60,6 +62,7 @@ class PaymentActivity : AppCompatActivity() {
                 }
                 is CurrenciesState.Error -> {
                     finish_button.isEnabled = false
+                    finish_button.alpha = 0.5f
                     checkout_progressbar.visibility = View.GONE
                     currency_spinner.visibility = View.GONE
                     total_checkout_text.visibility = View.VISIBLE
