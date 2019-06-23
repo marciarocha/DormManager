@@ -19,7 +19,11 @@ class SplashViewModel(
 
     private val compositeDisposable = CompositeDisposable()
 
-    fun populateDatabaseIfEmpty() {
+    init {
+        populateDatabaseIfEmpty()
+    }
+
+    private fun populateDatabaseIfEmpty() {
         _databaseState.value = DatabaseState.Loading
 
         compositeDisposable.add(

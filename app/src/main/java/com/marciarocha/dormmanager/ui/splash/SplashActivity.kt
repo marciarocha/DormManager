@@ -52,9 +52,4 @@ class SplashActivity : AppCompatActivity() {
         }, 1000)
 
     }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.populateDatabaseIfEmpty()
-    }
 }

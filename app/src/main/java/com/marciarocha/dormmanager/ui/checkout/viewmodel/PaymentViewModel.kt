@@ -19,7 +19,11 @@ class PaymentViewModel(private val ratesInteractor: RatesInteractor) : ViewModel
     private val _conversionState = MutableLiveData<ConversionState>()
     val conversionState: LiveData<ConversionState> = _conversionState
 
-    fun getRates(base: String) {
+    init {
+        getRates("USD")
+    }
+
+    private fun getRates(base: String) {
         _ratesState.value = CurrenciesState.Loading
 
         compositeDisposable.add(

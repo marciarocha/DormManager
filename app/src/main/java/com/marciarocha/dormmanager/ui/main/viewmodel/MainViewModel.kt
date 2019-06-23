@@ -26,6 +26,10 @@ class MainViewModel(
     private val _bookingState = MutableLiveData<BookingState>()
     val bookingState: LiveData<BookingState> = _bookingState
 
+    init {
+        getDorms()
+    }
+
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
@@ -36,7 +40,7 @@ class MainViewModel(
         postTotalPrice()
     }
 
-    fun getDorms() {
+    private fun getDorms() {
         _availableDormsState.value = AvailableDormsState.Loading
 
         compositeDisposable.add(

@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
 
         viewModel = ViewModelProviders.of(this, mainViewModelProviderFactory).get(MainViewModel::class.java)
         observeViewModelChanges()
-        viewModel.getDorms()
 
         checkout_button.setOnClickListener { onCheckout() }
         cancel_button.setOnClickListener { onCancel() }

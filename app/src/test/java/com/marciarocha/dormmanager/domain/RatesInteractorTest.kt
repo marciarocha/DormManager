@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.domain.interactor
+package com.marciarocha.dormmanager.domain
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.marciarocha.dormmanager.data.networking.RatesResponse

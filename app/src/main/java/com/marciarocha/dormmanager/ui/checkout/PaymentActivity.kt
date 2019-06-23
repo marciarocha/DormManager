@@ -37,7 +37,6 @@ class PaymentActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this, mainViewModelProviderFactory).get(PaymentViewModel::class.java)
         observeViewModelChanges()
-        viewModel.getRates("USD")
 
         finish_button.setOnClickListener { onFinishPayment() }
     }
