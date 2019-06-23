@@ -7,20 +7,20 @@ import io.reactivex.Single
 import kotlin.math.floor
 
 class RatesInteractorImpl(private val ratesRepository: RatesRepository) : RatesInteractor {
-    override fun getCurrencies(base: String): Single<List<String>> {
-        return ratesRepository.getRates(base)
+    override fun getExchangeRates(base: String): Single<List<String>> {
+        return ratesRepository.getExchangeRates(base)
             .map { response -> response.rates }
             .map { rates -> RatesMapper(rates) }
-            .doOnSuccess { ratesMapper -> cacheRates(ratesMapper.getRateEntities()) }
+            .doOnSuccess { ratesMapper -> cacheExchangeRates(ratesMapper.getRateEntities()) }
             .map { ratesMapper -> ratesMapper.getCurrencies() }
     }
 
-    override fun cacheRates(rates: List<RateEntity>) {
-        ratesRepository.cacheRates(rates)
+    override fun cacheExchangeRates(rates: List<RateEntity>) {
+        ratesRepository.cacheExchangeRates(rates)
     }
 
-    override fun getRate(currentPrice: Double, currency: String): Single<Double> {
-        return ratesRepository.getRate(currency)
+    override fun convertCurrency(currentPrice: Double, currency: String): Single<Double> {
+        return ratesRepository.getExchangeRate(currency)
             .map { rate -> currentPrice * rate }
             .map { convertedPrice -> floor(convertedPrice * 100) / 100 }
     }

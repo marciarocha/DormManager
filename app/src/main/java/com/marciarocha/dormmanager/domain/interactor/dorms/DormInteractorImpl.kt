@@ -18,10 +18,9 @@ class DormInteractorImpl @Inject constructor(private val dormRepository: DormRep
                     dormRepository.initDatabase()
                     Single.just(PopulateDatabaseResult.Success)
                 } else {
-                    Single.just(PopulateDatabaseResult.DatabaseAlreadySeeded)
+                    Single.just(PopulateDatabaseResult.DatabaseAlreadyPopulated)
                 }
             }
-
     }
 
     override fun getDorms(): Single<DatabaseResult> {

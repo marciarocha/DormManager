@@ -13,16 +13,16 @@ class RatesRepositoryImpl @Inject constructor(
     private val ratesDao: RatesDao
 ) : RatesRepository {
 
-    override fun getRates(base: String): Single<RatesResponse> {
+    override fun getExchangeRates(base: String): Single<RatesResponse> {
         return exchangeRatesApi.getLatestRates(base)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun cacheRates(rates: List<RateEntity>) {
+    override fun cacheExchangeRates(rates: List<RateEntity>) {
         ratesDao.insertAll(rates)
     }
 
-    override fun getRate(currency: String): Single<Double> {
+    override fun getExchangeRate(currency: String): Single<Double> {
         return ratesDao.getRate(currency).subscribeOn(Schedulers.io())
     }
 }

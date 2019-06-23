@@ -23,12 +23,12 @@ class PaymentViewModel(private val ratesInteractor: RatesInteractor) : ViewModel
         _ratesState.value = CurrenciesState.Loading
 
         compositeDisposable.add(
-            ratesInteractor.getCurrencies(base)
+            ratesInteractor.getExchangeRates(base)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ rates -> _ratesState.value = CurrenciesState.Loaded(rates) },
                     { error ->
                         _ratesState.value = CurrenciesState.Error
-                        Log.e("getCurrencies()", error.message)
+                        Log.e("getExchangeRates()", error.message)
                     })
         )
     }
@@ -37,11 +37,11 @@ class PaymentViewModel(private val ratesInteractor: RatesInteractor) : ViewModel
         _conversionState.value = ConversionState.Loading
 
         compositeDisposable.add(
-            ratesInteractor.getRate(currentPrice, currency).observeOn(AndroidSchedulers.mainThread())
+            ratesInteractor.convertCurrency(currentPrice, currency).observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ convertedPrice -> _conversionState.value = ConversionState.Loaded(convertedPrice) },
                     { error ->
                         _conversionState.value = ConversionState.Error
-                        Log.e("getRate()", error.message)
+                        Log.e("convertCurrency()", error.message)
                     })
         )
     }

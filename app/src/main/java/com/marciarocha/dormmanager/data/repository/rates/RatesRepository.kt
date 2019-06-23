@@ -6,9 +6,9 @@ import io.reactivex.Single
 
 interface RatesRepository {
 
-    fun getRates(base: String): Single<RatesResponse>
+    fun getExchangeRates(base: String): Single<RatesResponse>
 
-    fun cacheRates(rates: List<RateEntity>)
+    fun cacheExchangeRates(rates: List<RateEntity>)
 
-    fun getRate(currency: String): Single<Double>
+    fun getExchangeRate(currency: String): Single<Double>
 }
