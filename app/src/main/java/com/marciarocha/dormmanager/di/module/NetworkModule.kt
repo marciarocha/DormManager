@@ -1,10 +1,12 @@
 package com.marciarocha.dormmanager.di.module
 
 import android.content.Context
-import com.marciarocha.dormmanager.data.networking.api.ExchangeRatesApi
+import com.marciarocha.dormmanager.data.networking.api.exchangerates.ExchangeRatesApi
+import com.marciarocha.dormmanager.data.networking.api.networkstats.NetworkStatsApi
 import com.marciarocha.dormmanager.data.networking.interceptor.ConnectivityInterceptor
 import com.marciarocha.dormmanager.data.networking.interceptor.NetworkStatsInterceptor
 import com.marciarocha.dormmanager.data.networking.interceptor.NetworkUtil
+import com.marciarocha.dormmanager.data.repository.networkStats.NetworkStatsRepository
 import com.marciarocha.dormmanager.di.qualifier.ApplicationContext
 import com.marciarocha.dormmanager.di.scope.PerApplication
 import dagger.Module
@@ -21,9 +23,22 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun provideApi(retrofit: Retrofit): ExchangeRatesApi = retrofit.create(
-        ExchangeRatesApi::class.java
-    )
+    fun provideNetworkStatsApi(): NetworkStatsApi = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .baseUrl("https://gist.githubusercontent.com/ruimendesM/cb9313c4d4b3434975a3d7a6700d1787/raw/0 2d17a4c542ac99fe559df360cbfe9ba24dbe6be/")
+        .build()
+        .create(NetworkStatsApi::class.java)
+
+    @Provides
+    @PerApplication
+    fun provideExchangeRatesApi(client: OkHttpClient): ExchangeRatesApi = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(client)
+        .baseUrl("https://api.exchangeratesapi.io/")
+        .build()
+        .create(ExchangeRatesApi::class.java)
 
     @Provides
     @PerApplication
@@ -69,7 +84,8 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun providNetworkStatsInterceptor(): NetworkStatsInterceptor = NetworkStatsInterceptor()
+    fun providNetworkStatsInterceptor(networkStartRepository: NetworkStatsRepository): NetworkStatsInterceptor =
+        NetworkStatsInterceptor(networkStartRepository)
 
 
 }

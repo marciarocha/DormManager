@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.data.networking.api
+package com.marciarocha.dormmanager.data.networking.api.exchangerates
 
 import io.reactivex.Single
 import retrofit2.http.GET

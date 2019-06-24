@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.data.networking.api
+package com.marciarocha.dormmanager.data.networking.api.exchangerates
 
 import com.google.gson.annotations.SerializedName
 

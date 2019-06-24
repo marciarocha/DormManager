@@ -1,24 +1,27 @@
 package com.marciarocha.dormmanager.data.networking.interceptor
 
-import okhttp3.*
+import android.util.Log
+import com.marciarocha.dormmanager.data.repository.networkStats.NetworkStatsRepository
+import io.reactivex.disposables.CompositeDisposable
+import okhttp3.Interceptor
+import okhttp3.Response
+import javax.inject.Inject
 
-class NetworkStatsInterceptor : Interceptor {
+class NetworkStatsInterceptor @Inject constructor(private val networkStatsRepository: NetworkStatsRepository) :
+    Interceptor {
+    private val compositeDisposable = CompositeDisposable()
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val response = chain.proceed(request)
 
         val networkStats = ResponseParser(response).buildNetworkStats()
 
-        val urlBuilder =
-            HttpUrl.parse("https://gist.githubusercontent.com/ruimendesM/cb9313c4d4b3434975a3d7a6700d1787/raw/0 2d17a4c542ac99fe559df360cbfe9ba24dbe6be/stats")
-                ?.newBuilder()
-                ?.addQueryParameter("duration", networkStats.duration)
-                ?.addQueryParameter("status", networkStats.status)
-                ?.addQueryParameter("action", networkStats.action)?.build()
-
-        val newRequest = Request.Builder().url(urlBuilder).build()
-        val okHttpClient = OkHttpClient()
-        okHttpClient.newCall(newRequest).execute()
+        compositeDisposable.add(
+            networkStatsRepository.sendNetworkStats(networkStats)
+                .subscribe({ response -> Log.i("getNetworkStats()", response.string()) },
+                    { Log.e("senNetworkStats()", it.message) })
+        )
 
         return response
     }
