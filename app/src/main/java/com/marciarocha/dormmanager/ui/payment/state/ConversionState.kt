@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.checkout.state
+package com.marciarocha.dormmanager.ui.payment.state
 
 sealed class ConversionState {
     object Loading : ConversionState()

@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.checkout
+package com.marciarocha.dormmanager.ui.payment
 
 import android.app.Activity
 import android.os.Bundle
@@ -10,13 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.marciarocha.dormmanager.R
-import com.marciarocha.dormmanager.ui.checkout.state.ConversionState
-import com.marciarocha.dormmanager.ui.checkout.state.CurrenciesState
-import com.marciarocha.dormmanager.ui.checkout.viewmodel.PaymentViewModel
-import com.marciarocha.dormmanager.ui.checkout.viewmodel.PaymentViewModelProviderFactory
 import com.marciarocha.dormmanager.ui.main.TOTAL_PRICE
+import com.marciarocha.dormmanager.ui.payment.state.ConversionState
+import com.marciarocha.dormmanager.ui.payment.state.CurrenciesState
+import com.marciarocha.dormmanager.ui.payment.viewmodel.PaymentViewModel
+import com.marciarocha.dormmanager.ui.payment.viewmodel.PaymentViewModelProviderFactory
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_checkout.*
+import kotlinx.android.synthetic.main.activity_payment.*
 import javax.inject.Inject
 
 class PaymentActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class PaymentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_checkout)
+        setContentView(R.layout.activity_payment)
         AndroidInjection.inject(this)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -48,25 +48,25 @@ class PaymentActivity : AppCompatActivity() {
                     checkout_progressbar.visibility = View.VISIBLE
                     finish_button.isEnabled = false
                     finish_button.alpha = 0.5f
-                    currency_spinner.visibility = View.GONE
-                    total_checkout_text.visibility = View.GONE
+                    payment_info_cardview.visibility = View.GONE
                 }
                 is CurrenciesState.Loaded -> {
+                    payment_info_cardview.visibility = View.VISIBLE
                     checkout_progressbar.visibility = View.GONE
                     finish_button.isEnabled = true
                     finish_button.alpha = 1f
                     initSpinner(it.currencies)
-                    currency_spinner.visibility = View.VISIBLE
-                    total_checkout_text.visibility = View.VISIBLE
                     total_checkout_text.text = "$totalCost"
                 }
                 is CurrenciesState.Error -> {
-                    finish_button.isEnabled = false
-                    finish_button.alpha = 0.5f
+                    payment_info_cardview.visibility = View.VISIBLE
+                    finish_button.isEnabled = true
+                    finish_button.alpha = 1f
                     checkout_progressbar.visibility = View.GONE
                     currency_spinner.visibility = View.GONE
-                    total_checkout_text.visibility = View.VISIBLE
-                    total_checkout_text.text = "$totalCost USD"
+                    total_checkout_text.text = "$totalCost"
+                    currency_text.text = getString(R.string.USD)
+                    currency_text.visibility = View.VISIBLE
                     showToast()
                 }
             }

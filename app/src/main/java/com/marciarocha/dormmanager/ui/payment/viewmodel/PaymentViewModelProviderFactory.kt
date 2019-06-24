@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.checkout.viewmodel
+package com.marciarocha.dormmanager.ui.payment.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

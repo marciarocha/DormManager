@@ -1,7 +1,7 @@
 package com.marciarocha.dormmanager.di.module
 
-import com.marciarocha.dormmanager.ui.checkout.PaymentActivity
 import com.marciarocha.dormmanager.ui.main.MainActivity
+import com.marciarocha.dormmanager.ui.payment.PaymentActivity
 import com.marciarocha.dormmanager.ui.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

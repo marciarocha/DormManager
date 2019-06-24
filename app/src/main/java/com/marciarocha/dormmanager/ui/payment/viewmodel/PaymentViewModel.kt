@@ -1,12 +1,12 @@
-package com.marciarocha.dormmanager.ui.checkout.viewmodel
+package com.marciarocha.dormmanager.ui.payment.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marciarocha.dormmanager.domain.interactor.rates.RatesInteractor
-import com.marciarocha.dormmanager.ui.checkout.state.ConversionState
-import com.marciarocha.dormmanager.ui.checkout.state.CurrenciesState
+import com.marciarocha.dormmanager.ui.payment.state.ConversionState
+import com.marciarocha.dormmanager.ui.payment.state.CurrenciesState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
