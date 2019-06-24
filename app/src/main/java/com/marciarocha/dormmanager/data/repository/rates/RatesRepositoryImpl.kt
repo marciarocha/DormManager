@@ -1,7 +1,7 @@
 package com.marciarocha.dormmanager.data.repository.rates
 
-import com.marciarocha.dormmanager.data.networking.ExchangeRatesApi
-import com.marciarocha.dormmanager.data.networking.RatesResponse
+import com.marciarocha.dormmanager.data.networking.api.ExchangeRatesApi
+import com.marciarocha.dormmanager.data.networking.api.RatesResponse
 import com.marciarocha.dormmanager.data.persistence.dao.RatesDao
 import com.marciarocha.dormmanager.data.persistence.entity.RateEntity
 import io.reactivex.Single

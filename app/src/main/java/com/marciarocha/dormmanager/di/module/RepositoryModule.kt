@@ -1,6 +1,6 @@
 package com.marciarocha.dormmanager.di.module
 
-import com.marciarocha.dormmanager.data.networking.ExchangeRatesApi
+import com.marciarocha.dormmanager.data.networking.api.ExchangeRatesApi
 import com.marciarocha.dormmanager.data.persistence.dao.DormDao
 import com.marciarocha.dormmanager.data.persistence.dao.RatesDao
 import com.marciarocha.dormmanager.data.repository.dorms.DormRepository

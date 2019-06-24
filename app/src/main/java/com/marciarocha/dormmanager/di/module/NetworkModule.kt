@@ -1,6 +1,11 @@
 package com.marciarocha.dormmanager.di.module
 
-import com.marciarocha.dormmanager.data.networking.ExchangeRatesApi
+import android.content.Context
+import com.marciarocha.dormmanager.data.networking.api.ExchangeRatesApi
+import com.marciarocha.dormmanager.data.networking.interceptor.ConnectivityInterceptor
+import com.marciarocha.dormmanager.data.networking.interceptor.NetworkStatsInterceptor
+import com.marciarocha.dormmanager.data.networking.interceptor.NetworkUtil
+import com.marciarocha.dormmanager.di.qualifier.ApplicationContext
 import com.marciarocha.dormmanager.di.scope.PerApplication
 import dagger.Module
 import dagger.Provides
@@ -16,7 +21,9 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun provideApi(retrofit: Retrofit): ExchangeRatesApi = retrofit.create(ExchangeRatesApi::class.java)
+    fun provideApi(retrofit: Retrofit): ExchangeRatesApi = retrofit.create(
+        ExchangeRatesApi::class.java
+    )
 
     @Provides
     @PerApplication
@@ -37,9 +44,32 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun provideOkHttpClient(logging: HttpLoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(logging)
-        .readTimeout(25, TimeUnit.SECONDS)
-        .connectTimeout(25, TimeUnit.SECONDS)
-        .writeTimeout(25, TimeUnit.SECONDS).build()
+    fun provideOkHttpClient(
+        logging: HttpLoggingInterceptor,
+        connectivityInterceptor: ConnectivityInterceptor,
+        networkStatsInterceptor: NetworkStatsInterceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(logging)
+            .addInterceptor(connectivityInterceptor)
+            .addInterceptor(networkStatsInterceptor)
+            .readTimeout(25, TimeUnit.SECONDS)
+            .connectTimeout(25, TimeUnit.SECONDS)
+            .writeTimeout(25, TimeUnit.SECONDS).build()
+    }
+
+    @Provides
+    @PerApplication
+    fun provideConnectivityInterceptor(networkUtil: NetworkUtil): ConnectivityInterceptor =
+        ConnectivityInterceptor(networkUtil)
+
+    @Provides
+    @PerApplication
+    fun provideNetWorkUtil(@ApplicationContext applicationContext: Context): NetworkUtil =
+        NetworkUtil(applicationContext)
+
+    @Provides
+    @PerApplication
+    fun providNetworkStatsInterceptor(): NetworkStatsInterceptor = NetworkStatsInterceptor()
+
+
 }

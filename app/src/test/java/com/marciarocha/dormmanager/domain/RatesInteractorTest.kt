@@ -1,7 +1,7 @@
 package com.marciarocha.dormmanager.domain
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.marciarocha.dormmanager.data.networking.RatesResponse
+import com.marciarocha.dormmanager.data.networking.api.RatesResponse
 import com.marciarocha.dormmanager.data.repository.rates.RatesRepository
 import com.marciarocha.dormmanager.domain.interactor.rates.RatesInteractorImpl
 import io.reactivex.Single
