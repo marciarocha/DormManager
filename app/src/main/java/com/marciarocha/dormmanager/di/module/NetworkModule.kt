@@ -26,7 +26,7 @@ class NetworkModule {
     fun provideNetworkStatsApi(): NetworkStatsApi = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .baseUrl("https://gist.githubusercontent.com/ruimendesM/cb9313c4d4b3434975a3d7a6700d1787/raw/0 2d17a4c542ac99fe559df360cbfe9ba24dbe6be/")
+        .baseUrl("https://gist.githubusercontent.com/ruimendesM/cb9313c4d4b3434975a3d7a6700d1787/raw/02d17a4c542ac99fe559df360cbfe9ba24dbe6be/")
         .build()
         .create(NetworkStatsApi::class.java)
 
@@ -39,15 +39,6 @@ class NetworkModule {
         .baseUrl("https://api.exchangeratesapi.io/")
         .build()
         .create(ExchangeRatesApi::class.java)
-
-    @Provides
-    @PerApplication
-    fun provideRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .client(client)
-        .baseUrl("https://api.exchangeratesapi.io/")
-        .build()
 
     @Provides
     @PerApplication

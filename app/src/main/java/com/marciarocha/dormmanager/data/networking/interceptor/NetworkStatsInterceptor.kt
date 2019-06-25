@@ -20,7 +20,7 @@ class NetworkStatsInterceptor @Inject constructor(private val networkStatsReposi
         compositeDisposable.add(
             networkStatsRepository.sendNetworkStats(networkStats)
                 .subscribe({ response -> Log.i("getNetworkStats()", response.string()) },
-                    { Log.e("senNetworkStats()", it.message) })
+                    { Log.e("sendNetworkStats()", it.message) })
         )
 
         return response

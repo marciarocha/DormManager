@@ -13,7 +13,7 @@ class ResponseParser(private val response: Response) {
     private fun getBase64URL(): String {
         val url = this.response.request().url().toString()
         val data = url.toByteArray(Charsets.UTF_8)
-        return Base64.encodeToString(data, Base64.DEFAULT)
+        return "load-" + Base64.encodeToString(data, Base64.DEFAULT)
     }
 
     private fun getStatus(): String {
