@@ -6,8 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "dorms")
 data class DormEntity(
-    @PrimaryKey @ColumnInfo val description: String,
+    @ColumnInfo val description: String,
     @ColumnInfo val price: Int,
     @ColumnInfo val availableBeds: Int,
     @ColumnInfo val currency: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo
+    var id: Int = 0
+}
