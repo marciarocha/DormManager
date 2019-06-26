@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.main.viewmodel
+package com.marciarocha.dormmanager.viewmodel.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

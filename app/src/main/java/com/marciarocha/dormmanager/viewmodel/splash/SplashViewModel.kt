@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.ui.splash.viewmodel
+package com.marciarocha.dormmanager.viewmodel.splash
 
 import android.util.Log
 import androidx.lifecycle.LiveData

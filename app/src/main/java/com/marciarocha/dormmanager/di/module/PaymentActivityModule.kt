@@ -3,7 +3,7 @@ package com.marciarocha.dormmanager.di.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.marciarocha.dormmanager.domain.interactor.rates.RatesInteractor
-import com.marciarocha.dormmanager.ui.payment.viewmodel.PaymentViewModelProviderFactory
+import com.marciarocha.dormmanager.viewmodel.payment.PaymentViewModelProviderFactory
 import dagger.Module
 import dagger.Provides
 

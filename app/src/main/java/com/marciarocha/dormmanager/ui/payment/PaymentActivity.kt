@@ -13,8 +13,8 @@ import com.marciarocha.dormmanager.R
 import com.marciarocha.dormmanager.ui.main.TOTAL_PRICE
 import com.marciarocha.dormmanager.ui.payment.state.ConversionState
 import com.marciarocha.dormmanager.ui.payment.state.CurrenciesState
-import com.marciarocha.dormmanager.ui.payment.viewmodel.PaymentViewModel
-import com.marciarocha.dormmanager.ui.payment.viewmodel.PaymentViewModelProviderFactory
+import com.marciarocha.dormmanager.viewmodel.payment.PaymentViewModel
+import com.marciarocha.dormmanager.viewmodel.payment.PaymentViewModelProviderFactory
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_payment.*
 import javax.inject.Inject

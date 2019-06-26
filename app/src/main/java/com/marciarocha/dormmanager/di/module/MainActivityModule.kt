@@ -3,7 +3,7 @@ package com.marciarocha.dormmanager.di.module
 import androidx.lifecycle.ViewModelProvider
 import com.marciarocha.dormmanager.domain.SelectedDormsManager
 import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
-import com.marciarocha.dormmanager.ui.main.viewmodel.MainViewModelProviderFactory
+import com.marciarocha.dormmanager.viewmodel.main.MainViewModelProviderFactory
 import dagger.Module
 import dagger.Provides
 

@@ -34,5 +34,4 @@ class NetworkStatsInteractorImpl(private val networkStatsRepository: NetworkStat
             .singleOrError()
     }
 
-
 }
