@@ -9,18 +9,31 @@ class ReservationTest {
 
     @Test
     fun getTotalPrice_noDormsSelected_returnsTrue() {
-        val selectedDormsManager = Reservation()
-        val price = selectedDormsManager.getTotalPrice()
+        val reservation = Reservation()
+        val price = reservation.getTotalPrice()
         assertEquals(0, price)
     }
 
     @Test
     fun getTotalPrice_hasDormsSelected_returnsTrue() {
-        val selectedDormsManager = Reservation()
+        val reservation = Reservation()
         val dorm = Dorm("description", 12, 10, "USD")
 
-        selectedDormsManager.addDorm(dorm, 1)
-        val price = selectedDormsManager.getTotalPrice()
+        reservation.addDorm(dorm, 1)
+        val price = reservation.getTotalPrice()
         assertEquals(12, price)
     }
+
+    @Test
+    fun getTotalPrice_removeSelectedBedsFromDorm_returnsTrue() {
+        val reservation = Reservation()
+        val dorm = Dorm("description", 12, 10, "USD")
+        reservation.addDorm(dorm, 1)
+        reservation.addDorm(dorm, 0)
+
+        val price = reservation.getTotalPrice()
+        assertEquals(0, price)
+    }
+
+
 }
