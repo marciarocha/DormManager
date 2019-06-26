@@ -2,7 +2,6 @@ package com.marciarocha.dormmanager.domain.interactor.dorms
 
 import com.marciarocha.dormmanager.data.repository.dorms.DormRepository
 import com.marciarocha.dormmanager.domain.model.Dorm
-import com.marciarocha.dormmanager.domain.model.DormMapper
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
 import com.marciarocha.dormmanager.domain.state.PopulateDatabaseResult
 import io.reactivex.Single
@@ -25,7 +24,16 @@ class DormInteractorImpl @Inject constructor(private val dormRepository: DormRep
 
     override fun getDorms(): Single<DatabaseResult> {
         return dormRepository.getDorms()
-            .map { dormEntities -> dormEntities.map { dormEntity -> DormMapper(dormEntity).create() } }
+            .map { dormEntities ->
+                dormEntities.map { dormEntity ->
+                    Dorm(
+                        dormEntity.description,
+                        dormEntity.price,
+                        dormEntity.availableBeds,
+                        dormEntity.currency
+                    )
+                }
+            }
             .map { dorms -> mapResult(dorms) }
     }
 

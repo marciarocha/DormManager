@@ -1,4 +1,4 @@
-package com.marciarocha.dormmanager.data.networking.api.networkstats
+package com.marciarocha.dormmanager.data.networking.api.networkstats.networkStats
 
 data class NetworkStats(
     val duration: String,

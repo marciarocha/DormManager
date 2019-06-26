@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.marciarocha.dormmanager.data.persistence.AppDatabase
 import com.marciarocha.dormmanager.data.persistence.dao.DormDao
+import com.marciarocha.dormmanager.data.persistence.dao.NetworkStatsDao
 import com.marciarocha.dormmanager.data.persistence.dao.RatesDao
 import com.marciarocha.dormmanager.di.qualifier.ApplicationContext
 import com.marciarocha.dormmanager.di.scope.PerApplication
@@ -27,4 +28,8 @@ class PersistenceModule {
     @Provides
     @PerApplication
     internal fun provideRatesDao(appDatabase: AppDatabase): RatesDao = appDatabase.ratesDao()
+
+    @Provides
+    @PerApplication
+    internal fun provideNetworkStatsDao(appDatabase: AppDatabase): NetworkStatsDao = appDatabase.networkStatsDao()
 }

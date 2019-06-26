@@ -6,9 +6,9 @@ import com.marciarocha.dormmanager.data.networking.api.networkstats.NetworkStats
 import com.marciarocha.dormmanager.data.networking.interceptor.ConnectivityInterceptor
 import com.marciarocha.dormmanager.data.networking.interceptor.NetworkStatsInterceptor
 import com.marciarocha.dormmanager.data.networking.interceptor.NetworkUtil
-import com.marciarocha.dormmanager.data.repository.networkStats.NetworkStatsRepository
 import com.marciarocha.dormmanager.di.qualifier.ApplicationContext
 import com.marciarocha.dormmanager.di.scope.PerApplication
+import com.marciarocha.dormmanager.domain.interactor.networkstats.NetworkStatsInteractor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -65,8 +65,11 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun provideConnectivityInterceptor(networkUtil: NetworkUtil): ConnectivityInterceptor =
-        ConnectivityInterceptor(networkUtil)
+    fun provideConnectivityInterceptor(
+        networkUtil: NetworkUtil,
+        networkStatsInteractor: NetworkStatsInteractor
+    ): ConnectivityInterceptor =
+        ConnectivityInterceptor(networkUtil, networkStatsInteractor)
 
     @Provides
     @PerApplication
@@ -75,8 +78,8 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun providNetworkStatsInterceptor(networkStartRepository: NetworkStatsRepository): NetworkStatsInterceptor =
-        NetworkStatsInterceptor(networkStartRepository)
+    fun providNetworkStatsInterceptor(networkStatsInteractor: NetworkStatsInteractor): NetworkStatsInterceptor =
+        NetworkStatsInterceptor(networkStatsInteractor)
 
 
 }

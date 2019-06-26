@@ -9,4 +9,5 @@ class DormApplication : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.builder().create(this).build()
     }
+
 }
