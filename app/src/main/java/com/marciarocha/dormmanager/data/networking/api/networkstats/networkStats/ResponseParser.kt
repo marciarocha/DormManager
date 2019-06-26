@@ -3,20 +3,19 @@ package com.marciarocha.dormmanager.data.networking.api.networkstats.networkStat
 import android.util.Base64
 import okhttp3.Response
 
-class ResponseParser(private val response: Response) :
-    NetworkStatsBuilder {
+data class ResponseParser(val response: Response) {
 
-    override fun getDuration(): Long {
+    private fun getDuration(): Long {
         return this.response.receivedResponseAtMillis() - this.response.sentRequestAtMillis()
     }
 
-    override fun getBase64URL(): String {
+    private fun getBase64URL(): String {
         val url = this.response.request().url().toString()
         val data = url.toByteArray(Charsets.UTF_8)
         return "load-" + Base64.encodeToString(data, Base64.DEFAULT)
     }
 
-    override fun getStatus(): String {
+    private fun getStatus(): String {
         return if (this.response.isSuccessful) {
             "SUCCESS"
         } else {
@@ -24,7 +23,7 @@ class ResponseParser(private val response: Response) :
         }
     }
 
-    override fun buildNetworkStats(): NetworkStats {
+    fun buildNetworkStats(): NetworkStats {
         return NetworkStats(
             getDuration().toString(),
             getBase64URL(),

@@ -7,6 +7,7 @@ data class NetworkStats(
 ) {
     fun toHashMap(): HashMap<String, String> {
         val map = HashMap<String, String>()
+
         map["duration"] = this.duration
         map["action"] = this.action
         map["status"] = this.status

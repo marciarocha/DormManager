@@ -1,12 +1,8 @@
 package com.marciarocha.dormmanager.di.module
 
-import android.content.Context
 import com.marciarocha.dormmanager.data.networking.api.exchangerates.ExchangeRatesApi
 import com.marciarocha.dormmanager.data.networking.api.networkstats.NetworkStatsApi
-import com.marciarocha.dormmanager.data.networking.interceptor.ConnectivityInterceptor
 import com.marciarocha.dormmanager.data.networking.interceptor.NetworkStatsInterceptor
-import com.marciarocha.dormmanager.data.networking.interceptor.NetworkUtil
-import com.marciarocha.dormmanager.di.qualifier.ApplicationContext
 import com.marciarocha.dormmanager.di.scope.PerApplication
 import com.marciarocha.dormmanager.domain.interactor.networkstats.NetworkStatsInteractor
 import dagger.Module
@@ -52,29 +48,14 @@ class NetworkModule {
     @PerApplication
     fun provideOkHttpClient(
         logging: HttpLoggingInterceptor,
-        connectivityInterceptor: ConnectivityInterceptor,
         networkStatsInterceptor: NetworkStatsInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder().addInterceptor(logging)
-            .addInterceptor(connectivityInterceptor)
             .addInterceptor(networkStatsInterceptor)
             .readTimeout(25, TimeUnit.SECONDS)
             .connectTimeout(25, TimeUnit.SECONDS)
             .writeTimeout(25, TimeUnit.SECONDS).build()
     }
-
-    @Provides
-    @PerApplication
-    fun provideConnectivityInterceptor(
-        networkUtil: NetworkUtil,
-        networkStatsInteractor: NetworkStatsInteractor
-    ): ConnectivityInterceptor =
-        ConnectivityInterceptor(networkUtil, networkStatsInteractor)
-
-    @Provides
-    @PerApplication
-    fun provideNetWorkUtil(@ApplicationContext applicationContext: Context): NetworkUtil =
-        NetworkUtil(applicationContext)
 
     @Provides
     @PerApplication
