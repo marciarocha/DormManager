@@ -22,7 +22,7 @@ class BedPickerFragment : DialogFragment() {
     private val bedPickerAdapter by lazy {
         BedPickerAdapter(
             this::onSelect,
-            Range(0, selectedDorm.availableBeds).toList()
+            selectedDorm.getListOfBeds()
         )
     }
     private var onResultListener: OnDialogResultListener? = null

@@ -1,8 +1,8 @@
 package com.marciarocha.dormmanager.di.module
 
 import androidx.lifecycle.ViewModelProvider
-import com.marciarocha.dormmanager.domain.SelectedDormsManager
 import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
+import com.marciarocha.dormmanager.domain.model.Reservation
 import com.marciarocha.dormmanager.viewmodel.main.MainViewModelProviderFactory
 import dagger.Module
 import dagger.Provides
@@ -11,16 +11,17 @@ import dagger.Provides
 class MainActivityModule {
 
     @Provides
-    fun provideSelectedDormsManager(): SelectedDormsManager = SelectedDormsManager()
+    fun provideReservation(): Reservation =
+        Reservation()
 
     @Provides
     fun provideViewModelProviderFactory(
         dormInteractor: DormInteractor,
-        selectedDormsManager: SelectedDormsManager
+        reservation: Reservation
     ): ViewModelProvider.Factory {
         return MainViewModelProviderFactory(
             dormInteractor,
-            selectedDormsManager
+            reservation
         )
     }
 

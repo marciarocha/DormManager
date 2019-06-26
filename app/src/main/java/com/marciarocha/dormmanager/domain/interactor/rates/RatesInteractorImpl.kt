@@ -25,5 +25,4 @@ class RatesInteractorImpl(private val ratesRepository: RatesRepository) : RatesI
             .map { convertedPrice -> floor(convertedPrice * 100) / 100 }
     }
 
-
 }

@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.marciarocha.dormmanager.domain.SelectedDormsManager
 import com.marciarocha.dormmanager.domain.interactor.dorms.DormInteractor
 import com.marciarocha.dormmanager.domain.model.Dorm
+import com.marciarocha.dormmanager.domain.model.Reservation
 import com.marciarocha.dormmanager.domain.state.DatabaseResult
 import com.marciarocha.dormmanager.ui.main.state.AvailableDormsState
 import com.marciarocha.dormmanager.ui.main.state.BookingState
@@ -15,7 +15,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 class MainViewModel(
     private val dormInteractor: DormInteractor,
-    private val selectedDormManager: SelectedDormsManager
+    private val reservation: Reservation
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -36,7 +36,7 @@ class MainViewModel(
     }
 
     fun onDormSelected(dorm: Dorm, result: Int) {
-        selectedDormManager.putDorm(dorm, result)
+        reservation.addDorm(dorm, result)
         postTotalPrice()
     }
 
@@ -64,12 +64,12 @@ class MainViewModel(
     }
 
     fun clearSelectedDorms() {
-        selectedDormManager.clearDorms()
+        reservation.clear()
         postTotalPrice()
     }
 
     private fun postTotalPrice() {
-        _bookingState.value = BookingState(selectedDormManager.getTotalPrice())
+        _bookingState.value = BookingState(reservation.getTotalPrice())
     }
 
 }

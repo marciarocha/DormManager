@@ -9,7 +9,20 @@ data class Dorm(
     val currency: String
 ) : Serializable {
 
-    fun getFormattedPrice(): Double {
-        return price / 100.00
+    var bookedBeds: Int = 0
+
+    fun getFormattedPrice(): Double = price / 100.00
+
+    fun getPriceForReservation(): Int = this.bookedBeds * this.price
+
+    fun getListOfBeds(): List<Int> {
+        val listOfBeds = mutableListOf<Int>()
+
+        for (i in 0..this.availableBeds) {
+            listOfBeds.add(i)
+        }
+        return listOfBeds
     }
+
+
 }
