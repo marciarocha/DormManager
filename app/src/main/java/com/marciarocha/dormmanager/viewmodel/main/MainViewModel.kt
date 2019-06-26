@@ -58,7 +58,7 @@ class MainViewModel(
                 },
                     {
                         _availableDormsState.value = AvailableDormsState.Error
-                        Log.e("getDorms", it.message)
+                        Log.e("getDorms()", it.message)
                     })
         )
     }

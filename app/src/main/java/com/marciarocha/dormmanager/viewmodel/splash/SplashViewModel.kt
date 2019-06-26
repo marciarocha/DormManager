@@ -41,7 +41,7 @@ class SplashViewModel(
                     },
                     {
                         _databaseState.value = DatabaseState.Error
-                        Log.e("getDorms", it.message)
+                        Log.e("getDorms()", it.message)
                     })
         )
     }

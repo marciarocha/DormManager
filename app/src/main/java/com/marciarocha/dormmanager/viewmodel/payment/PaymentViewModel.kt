@@ -32,7 +32,7 @@ class PaymentViewModel(private val ratesInteractor: RatesInteractor) : ViewModel
                 .subscribe({ rates -> _ratesState.value = CurrenciesState.Loaded(rates) },
                     { error ->
                         _ratesState.value = CurrenciesState.Error
-                        Log.e("getExchangeRates()", error.message)
+                        Log.e("getExchangeRates,base=$base", error.message)
                     })
         )
     }
@@ -45,7 +45,7 @@ class PaymentViewModel(private val ratesInteractor: RatesInteractor) : ViewModel
                 .subscribe({ convertedPrice -> _conversionState.value = ConversionState.Loaded(convertedPrice) },
                     { error ->
                         _conversionState.value = ConversionState.Error
-                        Log.e("convertCurrency()", error.message)
+                        Log.e("convertCurrency($currency,$currentPrice=", error.message)
                     })
         )
     }

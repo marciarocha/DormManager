@@ -17,8 +17,6 @@
               android:textSize="@dimen/splash_text_size"
               android:fontFamily="sans-serif-condensed-medium"
               android:textColor="@color/colorDarkGray"
-              android:text="@string/app_name"
-
-    />
+              android:text="@string/app_name"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
