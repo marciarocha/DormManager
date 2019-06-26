@@ -16,7 +16,7 @@ class NetworkStatsInterceptor @Inject constructor(private val networkStatsIntera
         val response = chain.proceed(request)
 
         val networkStats = ResponseParser(response).buildNetworkStats()
-            networkStatsInteractor.sendNetworkStats(networkStats)
+        networkStatsInteractor.sendNetworkStats(networkStats).subscribe()
 
         return response
     }
