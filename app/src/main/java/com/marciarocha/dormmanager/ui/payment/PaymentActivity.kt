@@ -28,9 +28,9 @@ class PaymentActivity : AppCompatActivity() {
     private val totalCost by lazy { intent.extras.getDouble(TOTAL_PRICE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
-        AndroidInjection.inject(this)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.actionBar_title_checkoutactivity)

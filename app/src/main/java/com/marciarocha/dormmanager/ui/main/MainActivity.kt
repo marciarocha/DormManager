@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity(), OnDialogResultListener {
     private var totalPrice = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        AndroidInjection.inject(this)
 
         dorms_list.adapter = adapter
 

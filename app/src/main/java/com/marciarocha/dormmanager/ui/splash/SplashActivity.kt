@@ -24,9 +24,9 @@ class SplashActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        AndroidInjection.inject(this)
         viewModel = ViewModelProviders.of(this, splashViewModelProviderFactory).get(SplashViewModel::class.java)
 
         observeChanges()
