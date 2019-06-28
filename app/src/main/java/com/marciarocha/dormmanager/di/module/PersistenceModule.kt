@@ -22,9 +22,9 @@ class PersistenceModule {
 
     @Provides
     @PerApplication
-    internal fun provideDormDao(appDatabase: AppDatabase): DormDao = appDatabase.dormDao()
+    fun provideDormDao(appDatabase: AppDatabase): DormDao = appDatabase.dormDao()
 
     @Provides
     @PerApplication
-    internal fun provideRatesDao(appDatabase: AppDatabase): RatesDao = appDatabase.ratesDao()
+    fun provideRatesDao(appDatabase: AppDatabase): RatesDao = appDatabase.ratesDao()
 }
